@@ -1,0 +1,24 @@
+{
+  "name": "minesweeper",
+  "version": "0.0.0",
+  "description": "A minesweeper implemented in Javascript.",
+  "main": "index.html",
+  "authors": [
+    "Chaoran Yang"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "js/lib",
+    "test",
+    "tests",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "*",
+    "backbone": "*",
+    "requirejs": "*",
+    "jquery": "*"
+  }
+}
