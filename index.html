@@ -8,9 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Minesweeper</title>
 <meta name="description" content="A Javascript minesweeper game.">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/flipclock.css">
+<link rel="stylesheet"
+href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script data-main="js/app" src="js/lib/requirejs/require.js"></script>
 </head>
 <body>
@@ -23,10 +26,54 @@
     </a> to improve your experience.
   </p>
 <![endif]-->
-<!-- Add your site or application content here -->
-<p>Hello world!  This is HTML5 Boilerplate.</p>
+<!-- Minesweeper App -->
+<div class="ms-header">
+  <div class="container">
+    <h1>Minesweeper</h1>
+    <p>An Javascript implementation of the classic windows mini game.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="container-fluid" id="main"></div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
 <!-- Template -->
+<script id="selector-template" type="text/template">
+  <div class="input-group">
+    <span class="input-group-addon">Level:</span>
+    <div class="input-group-btn">
+      <button type="button" class="btn disabled btn-default">
+        <%= ["Beginner", "Intermediate", "Expert"][level] %>
+      </button>
+      <button type="button" data-toggle="dropdown" class=
+        "btn dropdown-toggle btn-default">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a class="level" data-level="0">Beginner</a></li>
+        <li><a class="level" data-level="1">Intermediate</a></li>
+        <li><a class="level" data-level="2">Expert</a></li>
+      </ul>
+    </div>
+  </div>
+</script>
+<script id="game-template" type="text/template">
+<div class="row">
+  <div class="col-sm-5 selector"></div>
+  <div class="col-sm-2">
+    <button type="button" class="reset btn btn-primary">New Game</button>
+  </div>
+  <div class="col-sm-5 timer"></div>
+</div>
+<div class="row board level_<%= level %>"></div>
+</script>
 <script id="board-template" type="text/template">
+<tbody>
 <% for (var i = 0; i < size; ++i) { %>
   <tr>
     <% for (var j = 0; j < size; ++j) { %>
@@ -34,6 +81,18 @@
     <% } %>
   </tr>
 <% } %>
+</tbody>
+</script>
+<script id="cell-template" type="text/template">
+<div class="cell-content">
+  <div>
+  <% if (hasMine) { %>
+    <span class="glyphicon glyphicon-asterisk"></span>
+  <% } else { %>
+    <span><%= value %></span>
+  <% } %>
+  </div>
+</div>
 </script>
 </body>
 </html>

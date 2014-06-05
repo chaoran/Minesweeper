@@ -1,14 +1,17 @@
 requirejs.config({
-  baseUrl: 'js/app',
+  baseUrl: 'js',
   paths: {
-    backbone: '../lib/backbone/backbone',
-    underscore: '../lib/underscore/underscore',
+    backbone: 'lib/backbone/backbone',
+    bootstrap: 'lib/bootstrap/dist/js/bootstrap.min',
+    underscore: 'lib/underscore/underscore',
     jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min'
   },
+  shim: {
+    'bootstrap': [ 'jquery' ]
+  }
 });
 
-require(['board', 'boardView'], function(Board, BoardView) {
-  var board = new Board({ size: 8, nMines: 10 });
-  var boardView = new BoardView({ model: board });
-  $('body').html(boardView.el);
+require(['gameView', 'bootstrap'], function(GameView) {
+  var gameView = new GameView();
+  $("#main").html(gameView.render().el);
 });
