@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "digital-7";
+  src: url("../fonts/digital-7.ttf");
+}
+
+.ms-root.table {
+  width: auto;
+}
+
+table>tbody.ms-board>tr>td {
+  padding: 0;
+}
+
+.ms-cell {
+  display: table;
+  width: 33px;
+  height: 33px;
+}
+
+.ms-cell.explode {
+  background-color: #d9534f;
+}
+
+.ms-cell .tile {
+  width: 34px;
+  height: 34px;
+  margin: -1px;
+  padding: 6px;
+  background-color: #eee;
+}
+
+.ms-cell div {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ms-dashboard .counter,
+.ms-dashboard .timer {
+  font-family: "digital-7";
+  font-size: 30px;
+  height: 20px;
+  line-height: .7;
+}
+
+.ms-dashboard tr th {
+  position: relative;
+}
+
+.ms-dashboard .timer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+  margin: 15px;
+}
+
+.ms-dashboard .counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px;
+  margin: 15px;
+}
+
+.ms-dashboard .btn-group {
+  display: table;
+  margin: 0 auto;
+}
